@@ -318,7 +318,6 @@ from helpers import (
 )
 import checker_bridge
 import auth
-import ayden
 import hit
 import st
 import rz
@@ -1428,3 +1427,21 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+# ══════════════════════════════════════════════════════════════════════════════
+# HANDLERS
+# ══════════════════════════════════════════════════════════════════════════════
+
+@router.message(CommandStart())
+async def cmd_start(message: types.Message):
+    """Start command handler"""
+    await message.reply("👋 Welcome to @hchkcardsbot!")
+
+@router.message(Command("help"))
+async def cmd_help(message: types.Message):
+    """Help command handler"""
+    await message.reply("📖 Help menu:\n/start - Start bot\n/help - This help")
+
+# Run bot
+if __name__ == "__main__":
+    asyncio.run(dp.start_polling(bot))
