@@ -318,7 +318,6 @@ from helpers import (
 )
 import checker_bridge
 import auth
-import ayden
 import hit
 import st
 import rz
@@ -1425,3 +1424,11 @@ async def cmd_api(message: types.Message):
 
 if __name__ == "__main__":
     asyncio.run(dp.start_polling(bot))
+
+@router.message(CommandStart())
+async def start(message: types.Message):
+    await message.reply("👋 Welcome!")
+
+@router.message(Command("help"))
+async def help_cmd(message: types.Message):
+    await message.reply("📖 Help menu")
